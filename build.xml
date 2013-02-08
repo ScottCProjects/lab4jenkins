@@ -2,6 +2,7 @@
 	<property name="src" value="src" />
 	<property name="build" value="build" />
 	<property name="junit4.jar" value="jars/junit-4.10.jar"/>
+	<property name="build.junitreport.dir" value="${build}/junitreport"/>
 	<property name="jar" value="Lab1JUnit.jar" />
 	<property name="given" value="../lab1given.jar"/>
 	
@@ -42,7 +43,40 @@
 		<jar jarfile="${given}"  basedir="t" />
 		<delete dir="t" />
 	</target>
+
+	<target name="junit" depends="prepare"
+                        description="Runs JUnit tests for classes starts with Test, and generates a report.">
+                <!-- First, clean the junit directory. -->
+                <delete dir="${build.junitreport.dir}"/>
+                <mkdir dir="${build.junitreport.dir}"/> 
+                <!-- Run the tests -->
+                <echo message="JUnit testing is running..."/>
+                <junit printsummary="withOutAndErr" haltonfailure="yes" fork="on">      
+                        <classpath>  
+                                <path refid="compile.classpath"/>
+                        </classpath>
+                        <formatter type="xml"/>
+                        <batchtest todir="${build.junitreport.dir}">
+                                <fileset dir="${src}">
+                                        <include name="**/*Test.java"/>
+                                </fileset>
+                        </batchtest>
+                </junit>
+            	<!-- Generate a report on the results. -->
+                <junitreport todir="${build.junitreport.dir}">
+                        <fileset dir="${build.junitreport.dir}">
+                                <include name="TEST-*.xml"/>
+                        </fileset>
+                        <report format="frames" todir="${build.junitreport.dir}" />
+                </junitreport>
+                <!-- Delete the interim junit output file to avoid computer information exposure.
+                <delete>
+                        <fileset dir="${build.junitreport.dir}">
+                                <include name="TEST-*.xml"/>
+                        </fileset>
+                </delete>
+		-->
+                <echo message="JUnit results in ${build.junitreport.dir}"/>
+        </target>
+
 </project>
-	
-
-
