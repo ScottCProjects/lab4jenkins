@@ -1,7 +1,7 @@
 <project name="CST316JUnitLab" default="build" basedir=".">
 	<property name="src" value="src" />
 	<property name="build" value="build" />
-	<property name="junit4.jar" value="/Users/kevinagary/jars/junit-4.10.jar"/>
+	<property name="junit4.jar" value="jars/junit-4.10.jar"/>
 	<property name="jar" value="Lab1JUnit.jar" />
 	<property name="given" value="../lab1given.jar"/>
 	
