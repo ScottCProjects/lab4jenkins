@@ -10,3 +10,6 @@ META-INF/*
 *.project
 *.classpath
 *.metadata
+
+# ant-generated stuff
+build/*

@@ -1,10 +1,18 @@
 <project name="CST316JUnitLab" default="build" basedir=".">
 	<property name="src" value="src" />
 	<property name="build" value="build" />
+	<property name="jars" value="jars"/>
 	<property name="junit4.jar" value="jars/junit-4.10.jar"/>
 	<property name="build.junitreport.dir" value="${build}/junitreport"/>
 	<property name="jar" value="Lab1JUnit.jar" />
 	<property name="given" value="../lab1given.jar"/>
+
+        <path id="compile.classpath">
+            <pathelement path="${build}/classes"/>  
+            <fileset dir="${jars}">
+               <include name="**/*.jar"/>
+            </fileset>          
+        </path>
 	
 	<target name="prepare">
 		<tstamp/>
