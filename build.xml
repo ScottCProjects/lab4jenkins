@@ -4,7 +4,6 @@
 	<property name="jars" value="jars"/>
 	<property name="junit4.jar" value="jars/junit-4.10.jar"/>
 	<property name="build.junitreport.dir" value="${build}/junitreport"/>
-	<property name="build.eclemma.report.dir" value="${build}/eclemmareport"/>
 	<property name="jar" value="Lab1JUnit.jar" />
 	<property name="given" value="../lab1given.jar"/>
 
